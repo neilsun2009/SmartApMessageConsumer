@@ -65,8 +65,8 @@ public class CollectionHotspotSqlTransformer implements SqlTransformer {
 			generateExternalDatas(extNormalCollectResult, deviceInfos, arr,
 					uuid);
 		}
-		String updateSql = "update T_LOCATION_SERVER set F_LAST_DATA_TIME = sysdate,F_LAST_BEAT_TIME=sysdate where F_LOCATION_ID = '"
-				+ locationId + "'";
+		String updateSql = "UPDATE t_location_server SET f_last_data_time = current_timestamp, f_last_beat_time = current_timestamp WHERE f_location_id = '"
+				+ deviceInfos[0] + "'";
 		BatchUpdateSqls.add(updateSql);
 		result.put(SourceFilesHelper.EXTERNAL, extNormalCollectResult);
 		result.put(SourceFilesHelper.UPDATE_LOCATION, BatchUpdateSqls);

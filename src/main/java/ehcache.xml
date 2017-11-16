@@ -1,0 +1,54 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+	updateCheck="true" monitoring="autodetect" dynamicConfig="true">
+
+	<defaultCache maxElementsInMemory="3000" 
+				  eternal="true"
+				  overflowToDisk="false"
+				  timeToIdleSeconds="0"
+				  timeToLiveSeconds="0">
+	</defaultCache>
+
+	<cache 	name="DEVICE_INFO" 
+			maxElementsInMemory="10000"
+			overflowToDisk="false" 
+			eternal="false" 
+			timeToIdleSeconds="0"
+			timeToLiveSeconds="360" 
+			memoryStoreEvictionPolicy="LRU"
+			transactionalMode="off">
+		<searchable keys="true" /> <!--可以根据Key进行查询，查询的Attribute就是keys -->
+	</cache>
+	
+	<cache 	name="WIFI_TAG_NORMAL_MAC_INFO" 
+			maxElementsInMemory="500000"
+			overflowToDisk="false" 
+			eternal="false" 
+			timeToIdleSeconds="0"
+			timeToLiveSeconds="360" 
+			memoryStoreEvictionPolicy="LRU"
+			transactionalMode="off">
+		<searchable keys="true" /> <!--可以根据Key进行查询，查询的Attribute就是keys -->
+	</cache>
+	<cache 	name="WIFI_TAG_ILLEGAL_MAC_INFO" 
+			maxElementsInMemory="500000"
+			overflowToDisk="false" 
+			eternal="false" 
+			timeToIdleSeconds="0"
+			timeToLiveSeconds="360" 
+			memoryStoreEvictionPolicy="LRU"
+			transactionalMode="off">
+		<searchable keys="true" /> <!--可以根据Key进行查询，查询的Attribute就是keys -->
+	</cache>
+	
+	<cache 	name="DEVICE_INFO_V2" 
+			maxElementsInMemory="3000"
+			overflowToDisk="false" 
+			eternal="true" 
+			timeToIdleSeconds="0"
+			timeToLiveSeconds="0" 
+			memoryStoreEvictionPolicy="LRU"
+			transactionalMode="off">
+		<searchable keys="true" /> <!--可以根据Key进行查询，查询的Attribute就是keys -->
+	</cache>
+</ehcache>

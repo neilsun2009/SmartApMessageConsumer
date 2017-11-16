@@ -1,0 +1,217 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>smartAP</groupId>
+  <artifactId>MessageConsumer_2</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>MessageConsumer_2</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.kafka</groupId>
+    	<artifactId>kafka_2.10</artifactId>
+    	<version>0.8.0</version>
+    	<exclusions>
+                <exclusion>
+                    <groupId>javax.mail</groupId>
+                    <artifactId>mail</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.jms</groupId>
+                    <artifactId>jms</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jdmk</groupId>
+                    <artifactId>jmxtools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jmx</groupId>
+                    <artifactId>jmxri</artifactId>
+                </exclusion>
+          </exclusions>
+          <!-- <scope>runtime</scope> -->
+    </dependency>
+    
+    <dependency>
+ 		<groupId>org.apache.kafka</groupId>
+ 		<artifactId>kafka-clients</artifactId>
+ 		<version>0.10.0.0</version>
+	</dependency>
+    
+    <!-- log4j -->
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+  	
+
+
+		<!-- oracle -->
+		<dependency>
+			<groupId>com.pivotal.jdbc.GreenplumDriver</groupId>
+			<artifactId>greenplum</artifactId>
+			<version>5.1.4.000143</version>
+			<scope>system</scope>
+			<systemPath>/usr/local/gpdb/greenplum.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+
+		<!-- common -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>MessageConsumer</finalName>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<!-- 控制资源文件的拷贝 -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<!-- 设置源文件编码方式 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>smartAP.MessageConsumer_2.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- 拷贝依赖的jar包到lib目录 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/lib
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 解决资源文件的编码问题 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- 打包source文件为jar文件 -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<attach>true</attach>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- generate java doc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<javadocDirectory>target/javadoc</javadocDirectory>
+					<reportOutputDirectory>target/javadoc</reportOutputDirectory>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+					<show>private</show>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

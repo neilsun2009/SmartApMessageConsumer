@@ -108,9 +108,9 @@ public class KafkaConsumer {
 					
 					String sql = null;
 					String tableName = TableInsertParameter.terminalFeatureTableName;
-					sql = " insert /*+append nologging*/ into " + tableName + "("
+					sql = " INSERT INTO " + tableName + "("
 							+ TableInsertParameter.inertParameter.get(tableName)
-							+ ") values ("
+							+ ") VALUES ("
 							+ datas.get(i)
 							+ ")" ;
 					

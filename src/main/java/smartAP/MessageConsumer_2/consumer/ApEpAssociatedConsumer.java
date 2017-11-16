@@ -121,9 +121,9 @@ public class ApEpAssociatedConsumer extends Thread {
 					
 					String sql = null;
 					String tableName = TableInsertParameter.apEpAssociatedTableName;
-					sql = " insert /*+append nologging*/ into " + tableName + "("
+					sql = " INSERT INTO " + tableName + "("
 							+ TableInsertParameter.inertParameter.get(tableName)
-							+ ") values ("
+							+ ") VALUES ("
 							+ datas.get(i)
 							+ ")" ;
 					

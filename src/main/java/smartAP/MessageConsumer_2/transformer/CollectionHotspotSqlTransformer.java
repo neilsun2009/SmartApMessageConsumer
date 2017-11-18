@@ -80,24 +80,24 @@ public class CollectionHotspotSqlTransformer implements SqlTransformer {
 		String locationId = deviceInfos[0];
 		String areaCode = deviceInfos[1];
 		String orgCode = deviceInfos[2];
-		sb.append("'"+uuid + "',");// uuid
-		sb.append("'"+arr[0] + "',");// HOTSPOT_MAC
-		sb.append("'"+arr[1] + "',");// HOTSPOT_SSID
-		sb.append("'"+arr[2] + "',");// HOTSPOT_CHANNEL
-		sb.append("'"+arr[3] + "',");// HOTSPOT_ENCRYPTION_TYPE
+		sb.append(StringUtil.sqlColumnDecorator(uuid, false));// uuid
+		sb.append(StringUtil.sqlColumnDecorator(arr[0], false));// HOTSPOT_MAC
+		sb.append(StringUtil.sqlColumnDecorator(arr[1], false));// HOTSPOT_SSID
+		sb.append(StringUtil.sqlColumnDecorator(arr[2], false));// HOTSPOT_CHANNEL
+		sb.append(StringUtil.sqlColumnDecorator(arr[3], false));// HOTSPOT_ENCRYPTION_TYPE
 		sb.append( DateUtil.getTimestamp(arr[4]) + ",");// CAP_TIME
-		sb.append("'"+arr[5] + "',");// SIGNAL
-		sb.append("'"+arr[6] + "',");// F_X
-		sb.append("'"+arr[7] + "',");// F_Y
-		sb.append("'"+arr[8] + "',");// SITE_CODE
-		sb.append("'"+arr[9] + "',");// DEVICE_CODE
-		sb.append("'"+locationId + "',");// LOCATION_ID
-		sb.append("'"+arr[10] + "',");// LONGITUDE
-		sb.append("'"+arr[11] + "',");// LATITUDE
-		sb.append("'"+ "0',");// HAS_FULLINDEX
-		sb.append("'"+areaCode + "',");// AREA_CODE
+		sb.append(StringUtil.sqlColumnDecorator(arr[5], false));// SIGNAL
+		sb.append(StringUtil.sqlColumnDecorator(arr[6], false));// F_X
+		sb.append(StringUtil.sqlColumnDecorator(arr[7], false));// F_Y
+		sb.append(StringUtil.sqlColumnDecorator(arr[8], false));// SITE_CODE
+		sb.append(StringUtil.sqlColumnDecorator(arr[9], false));// DEVICE_CODE
+		sb.append(StringUtil.sqlColumnDecorator(locationId,  false));// LOCATION_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[10], false));// LONGITUDE
+		sb.append(StringUtil.sqlColumnDecorator(arr[11], false));// LATITUDE
+		sb.append(StringUtil.sqlColumnDecorator("0", false));// HAS_FULLINDEX
+		sb.append(StringUtil.sqlColumnDecorator(areaCode, false));// AREA_CODE
 		sb.append(DateUtil.dateToStrTimestamp(new Date()) + ",");// CREATION_TIME
-		sb.append("'"+orgCode + "'");// ORG_CODE
+		sb.append(StringUtil.sqlColumnDecorator(orgCode, true));// ORG_CODE
 		result.add(sb.toString());
 		return result;
 	}

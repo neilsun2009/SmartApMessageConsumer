@@ -194,4 +194,20 @@ public class StringUtil {
 		}
 		return object.toString();
 	}
+	
+	/**
+	 * SQL列元素修饰
+	 * SQL插入中，如果输入为null则直接返回，不然加上单引号包裹
+	 * 
+	 * @param string
+	 * @param boolean
+	 * @return
+	 */
+	public static String sqlColumnDecorator(String col, boolean isEnd) {
+		if (isEnd) {
+			return col.equals("null") ? col : "'" + col + "'";
+		} else {
+			return col.equals("null") ? col + "," : "'" + col + "',";
+		}
+	}
 }

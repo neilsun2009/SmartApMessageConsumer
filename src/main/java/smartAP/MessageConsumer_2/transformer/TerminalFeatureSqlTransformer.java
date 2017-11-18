@@ -92,29 +92,29 @@ public class TerminalFeatureSqlTransformer implements SqlTransformer {
 		String areaCode = deviceInfos[1];
 		String organizationCode = deviceInfos[2];
 		String capTime = DateUtil.getTimestamp(arr[3]);
-		sb.append("'"+uuid + "',");// uuid
-		sb.append("'"+locationId + "',");// locationid
+		sb.append(StringUtil.sqlColumnDecorator(uuid, false));// uuid
+		sb.append(StringUtil.sqlColumnDecorator(locationId, false));// locationid
 		sb.append(capTime + ",");// captime
-		sb.append("'"+arr[0] + "',");// mac
-		sb.append("'"+arr[1] + "',");// mactype
-		sb.append("'"+arr[4] + "',");// signal
-		sb.append("'"+arr[2] + "',");// terminal ssid list
-		sb.append("'"+arr[5] + "',");// id type
-		sb.append("'"+arr[6] + "',");// id content
-		sb.append("'"+arr[7] + "',");// access ssid
-		sb.append("'"+arr[9] + "',");// access channel
-		sb.append("'"+arr[8] + "',");// devicemac
-		sb.append("'"+arr[14] + "',");// devicecode
-		sb.append("'"+arr[10] + "',");// hostspot encryption type
-		sb.append("'"+arr[11] + "',");// x site
-		sb.append("'"+arr[12] + "',");// y site
-		sb.append("'"+arr[13] + "',");// site code
-		sb.append("'"+arr[15] + "',");// longitude
-		sb.append("'"+arr[16] + "',");// latitude
-		sb.append("'"+"0',");// has fullindex
-		sb.append("'"+areaCode + "',");
-		sb.append(DateUtil.dateToStrTimestamp(new Date()) + ",");// CREATION_TIME
-		sb.append("'"+organizationCode+ "'");
+		sb.append(StringUtil.sqlColumnDecorator(arr[0], false));// mac
+		sb.append(StringUtil.sqlColumnDecorator(arr[1], false));// mactype
+		sb.append(StringUtil.sqlColumnDecorator(arr[4], false));// signal
+		sb.append(StringUtil.sqlColumnDecorator(arr[2], false));// terminal ssid list
+		sb.append(StringUtil.sqlColumnDecorator(arr[5], false));// id type
+		sb.append(StringUtil.sqlColumnDecorator(arr[6], false));// id content
+		sb.append(StringUtil.sqlColumnDecorator(arr[7], false));// access ssid
+		sb.append(StringUtil.sqlColumnDecorator(arr[9], false));// access channel
+		sb.append(StringUtil.sqlColumnDecorator(arr[8], false));// devicemac
+		sb.append(StringUtil.sqlColumnDecorator(arr[14], false));// devicecode
+		sb.append(StringUtil.sqlColumnDecorator(arr[10], false));// hostspot encryption type
+		sb.append(StringUtil.sqlColumnDecorator(arr[11], false));// x site
+		sb.append(StringUtil.sqlColumnDecorator(arr[12], false));// y site
+		sb.append(StringUtil.sqlColumnDecorator(arr[13], false));// site code
+		sb.append(StringUtil.sqlColumnDecorator(arr[15], false));// longitude
+		sb.append(StringUtil.sqlColumnDecorator(arr[16], false));// latitude
+		sb.append(StringUtil.sqlColumnDecorator("0", false));// has fullindex
+		sb.append(StringUtil.sqlColumnDecorator(areaCode, false));
+		sb.append(DateUtil.dateToStrTimestamp(new Date())+ ",");// CREATION_TIME
+		sb.append(StringUtil.sqlColumnDecorator(organizationCode, true));
 		result.add(sb.toString());
 		return result;
 	}

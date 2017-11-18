@@ -89,7 +89,6 @@ public class ApEpAssociatedConsumer extends Thread {
         	for(int i = 0 ; i < data.length ; i++) {
         		message.add(data[i]);
         	}
-        	msgLogInfo.info(message.toString());
         	writeIntoTable(message);
         	message.clear();
         }

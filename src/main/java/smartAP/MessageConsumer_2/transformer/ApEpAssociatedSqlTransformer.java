@@ -66,13 +66,13 @@ public class ApEpAssociatedSqlTransformer implements SqlTransformer {
 			String[] deviceInfos, String[] arr, String uuid) {
 		StringBuffer sb = new StringBuffer();
 		// F_LOCATION_ID;F_AREA_CODE;F_ORGANIZATION_CODE ;F_DEVICE_ID
-		sb.append("'"+uuid+ "',");
+		sb.append(StringUtil.sqlColumnDecorator(uuid, false));
 		sb.append(DateUtil.getTimestamp(arr[0]) + ",");// CAP_TIME
-		sb.append("'"+arr[1]+ "',");//DEVICE_MAC
-		sb.append("'"+arr[2] + "',");// DEVICE_CODE
-		sb.append("'"+arr[3] + "',"); //AP_MAC
-		sb.append("'"+arr[4] + "',"); //AP_SSID
-		sb.append("'"+arr[5]+"'"); //EP_MACS
+		sb.append(StringUtil.sqlColumnDecorator(arr[1], false)); //DEVICE_MAC
+		sb.append(StringUtil.sqlColumnDecorator(arr[2], false)); // DEVICE_CODE
+		sb.append(StringUtil.sqlColumnDecorator(arr[3], false)); //AP_MAC
+		sb.append(StringUtil.sqlColumnDecorator(arr[4], false)); //AP_SSID
+		sb.append(StringUtil.sqlColumnDecorator(arr[5], true)); //EP_MACS
 		result.add(sb.toString());
 		return result;
 	}

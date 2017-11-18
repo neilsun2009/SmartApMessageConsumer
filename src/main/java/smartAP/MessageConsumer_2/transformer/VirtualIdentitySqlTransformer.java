@@ -81,34 +81,34 @@ public class VirtualIdentitySqlTransformer implements SqlTransformer {
 		String locationId = deviceInfos[0];
 		String areaCode = deviceInfos[1];
 		String orgCode = deviceInfos[2];
-		sb.append("'" + uuid + "',");// uuid
-		sb.append("'" + locationId + "',");// LOCATION_ID
-		sb.append("'" + arr[1] + "',");// DEVICE_CODE
-		sb.append("'" + arr[2] + "',");// CLIENT_MAC
-		sb.append("'" + arr[4] + "',");// IMSI
-		sb.append("'" + arr[3] + "',");// IMEI
-		sb.append("'" + arr[5] + "',");// TEL
-		sb.append("'" + arr[6] + "',");// WEIXIN
-		sb.append("'" + arr[7] + "',");// TAOBAO
-		sb.append("'" + arr[8] + "',");// EMAIL
-		sb.append("'" + arr[9] + "',");// QQ
-		sb.append("'" + arr[10] + "',");// QQ_HISTORY
-		sb.append("'" + areaCode + "',");// AREA_CODE
-		sb.append("'" + orgCode + "',");// ORG_CODE
-		sb.append("'" + arr[11] + "',");// ILLEGAL_APP
-		sb.append("'" + arr[12] + "',");// BAIDU_ID
-		sb.append("'" + arr[13] + "',");// JINGDONG_ID
-		sb.append("'" + arr[14] + "',");// TENCENT_WB_ID
-		sb.append("'" + arr[15] + "',");// SINA_ID
-		sb.append("'" + arr[16] + "',");// YOUKU_ID
-		sb.append("'" + arr[17] + "',");// MILIAO_ID
-		sb.append("'" + arr[18] + "',");// XIECHENG_ID
-		sb.append("'" + arr[19] + "',");// DIDI_ID
-		sb.append("'" + arr[20] + "',");// MONO_ID
-		sb.append("'" + arr[21] + "',");// DANGDANG_ID
-		sb.append("'" + arr[22] + "',");// MEITUAN_ID
-		sb.append("'" + arr[23] + "',");// DAZHONG_ID
-		sb.append("'" + arr[24] + "',");// KUGOU_ID
+		sb.append(StringUtil.sqlColumnDecorator(uuid, false));// uuid
+		sb.append(StringUtil.sqlColumnDecorator(locationId, false));// locationid
+		sb.append(StringUtil.sqlColumnDecorator(arr[1], false));// DEVICE_CODE
+		sb.append(StringUtil.sqlColumnDecorator(arr[2], false));// CLIENT_MAC
+		sb.append(StringUtil.sqlColumnDecorator(arr[4], false));// IMSI
+		sb.append(StringUtil.sqlColumnDecorator(arr[3], false));// IMEI
+		sb.append(StringUtil.sqlColumnDecorator(arr[5], false));// TEL
+		sb.append(StringUtil.sqlColumnDecorator(arr[6], false));// WEIXIN
+		sb.append(StringUtil.sqlColumnDecorator(arr[7], false));// TAOBAO
+		sb.append(StringUtil.sqlColumnDecorator(arr[8], false));// EMAIL
+		sb.append(StringUtil.sqlColumnDecorator(arr[9], false));// QQ
+		sb.append(StringUtil.sqlColumnDecorator(arr[10], false));// QQ_HISTORY
+		sb.append(StringUtil.sqlColumnDecorator(areaCode, false));// AREA_CODE
+		sb.append(StringUtil.sqlColumnDecorator(orgCode, false));// ORG_CODE
+		sb.append(StringUtil.sqlColumnDecorator(arr[11], false));// ILLEGAL_APP
+		sb.append(StringUtil.sqlColumnDecorator(arr[12], false));// BAIDU_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[13], false));// JINGDONG_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[14], false));// TENCENT_WB_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[15], false));// SINA_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[16], false));// YOUKU_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[17], false));// MILIAO_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[18], false));// XIECHENG_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[19], false));// DIDI_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[20], false));// MONO_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[21], false));// DANGDANG_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[22], false));// MEITUAN_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[23], false));// DAZHONG_ID
+		sb.append(StringUtil.sqlColumnDecorator(arr[24], false));// KUGOU_ID
 		sb.append(DateUtil.getTimestamp(arr[0]) + ",");// CAP_TIME  
 		sb.append(DateUtil.dateToStrTimestamp(new Date()));// CREATION_TIME
 		result.add(sb.toString());
